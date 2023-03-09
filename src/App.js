@@ -6,6 +6,10 @@ import ReadOnlyRow from "./components/ReadOnlyRow";
 import EditableRow from "./components/EditableRow";
 import Select from "react-select";
 
+import { ExportCSV } from './components/ExportCSV'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
+
 const App = () => {
   const [contacts, setContacts] = useState(data);
   const [addFormData, setAddFormData] = useState({
@@ -183,10 +187,13 @@ const App = () => {
           placeholder="Enter a End Date..."
           onChange={handleAddFormChange}
         />
-        <button type="submit">Add</button>
+        <Button variant="success" type="submit">Add</Button>        
       </form>
+
+      <div><ExportCSV csvData={contacts} fileName={"deliverables"}/></div>
+
       <form onSubmit={handleEditFormSubmit}>
-        <table>
+        <table id="example">
           <thead>
             <tr>
               <th>User</th>
